@@ -11,7 +11,7 @@ import json
 # -----------------------------
 # CONFIG
 # -----------------------------
-MODEL_PATH = "ecg_efficientnetb0.h5"   # use the .h5 model file
+MODEL_PATH = "ecg_model.keras"   # use the .h5 model file
 IMG_SIZE = (224, 224)
 
 # Load class indices mapping
