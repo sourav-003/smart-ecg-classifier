@@ -2,10 +2,8 @@ import os
 import numpy as np
 import streamlit as st
 import cv2
-import tensorflow as tf
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 from tensorflow.keras.applications.efficientnet import preprocess_input
-from PIL import Image
 import plotly.express as px
 import plotly.graph_objects as go
 import json
@@ -13,7 +11,7 @@ import json
 # -----------------------------
 # CONFIG
 # -----------------------------
-MODEL_PATH = "saved_model_ecg"
+MODEL_PATH = "ecg_efficientnetb0.h5"   # use the .h5 model file
 IMG_SIZE = (224, 224)
 
 # Load class indices mapping
@@ -29,7 +27,7 @@ class_names = [idx_to_class[i] for i in range(len(idx_to_class))]
 # -----------------------------
 @st.cache_resource
 def load_ecg_model():
-    model = load_model(MODEL_PATH)
+    model = load_model(MODEL_PATH, compile=False)  # load .h5 model
     return model
 
 model = load_ecg_model()
@@ -104,7 +102,7 @@ elif app_mode == "Upload & Classify":
 
             with st.spinner("Processing..."):
                 img = preprocess_image(uploaded_file)
-                preds = model.predict(img)
+                preds = model.predict(img)  # standard Keras model predict
                 pred_idx = np.argmax(preds)
                 pred_class = class_names[pred_idx]
                 confidence = preds[0][pred_idx] * 100
