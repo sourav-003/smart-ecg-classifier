@@ -13,7 +13,7 @@ import json
 # -----------------------------
 # CONFIG
 # -----------------------------
-MODEL_PATH = "ecg_efficientnetb0.h5"   # path to your .h5 model
+MODEL_PATH = "saved_model_ecg"
 IMG_SIZE = (224, 224)
 
 # Load class indices mapping
