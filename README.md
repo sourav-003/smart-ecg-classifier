@@ -126,3 +126,8 @@ Multiple approaches are explored:
 
 hub.com/your-username/SmartECG.git
    cd SmartECG
+
+---
+
+## Live Project
+Check out the live version of this project here: [Live Demo](https://huggingface.co/spaces/Sourav-003/smartECG)
